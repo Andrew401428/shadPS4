@@ -29,6 +29,7 @@ enum class ConditionOp : u32 {
     LE,
     TRU,
     U,
+    O,
 };
 
 enum class AtomicOp : u32 {
@@ -246,8 +247,8 @@ public:
     void V_MOVRELSD_B32(const GcnInst& inst);
 
     // VOPC
-    void V_CMP_F32(ConditionOp op, bool set_exec, const GcnInst& inst);
-    void V_CMP_F64(ConditionOp op, bool set_exec, const GcnInst& inst);
+    void V_CMP_F32(ConditionOp op, bool set_exec, const GcnInst& inst, bool ordered = true);
+    void V_CMP_F64(ConditionOp op, bool set_exec, const GcnInst& inst, bool ordered = true);
     void V_CMP_U32(ConditionOp op, bool is_signed, bool set_exec, const GcnInst& inst);
     void V_CMP_U64(ConditionOp op, bool is_signed, bool set_exec, const GcnInst& inst);
     void V_CMP_CLASS_F32(const GcnInst& inst);
